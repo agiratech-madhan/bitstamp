@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import '../networking/http_service.dart';
 import '../networking/api_interface.dart';
 
@@ -42,7 +43,7 @@ class ApiService implements ApiInterface {
     required T Function(JSON response) converter,
     final dynamic Function(bool)? onError,
   }) async {
-    print(endpoint);
+    log(endpoint);
     final dataMap = await _httpService.post(
       endpoint: endpoint,
       body: jsonEncode(data),

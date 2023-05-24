@@ -18,7 +18,7 @@ class RouteManager {
             settings: RouteSettings(
               name: RouteConstants.homeScreen,
             ),
-            builder: (context) => HomeScreen());
+            builder: (context) => const HomeScreen());
       default:
         return MaterialPageRoute(
             settings: const RouteSettings(name: RouteConstants.splashScreen),

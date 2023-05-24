@@ -14,24 +14,16 @@ class AppTheme {
       },
     ),
     scaffoldBackgroundColor: const Color(0xffF5F5F5),
-    primaryColor: Colors.white,
+    cardColor: Colors.white,
     appBarTheme: const AppBarTheme(
       color: Colors.white,
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
     ),
-    colorScheme: const ColorScheme.light(
-      primary: Colors.white,
-      onPrimary: Colors.white,
-      primaryContainer: Colors.white38,
-      // secondary: Colors.purple,
-    ),
     textTheme: const TextTheme(
       displayMedium: TextStyle(
-        fontSize: 45,
-        fontWeight: FontWeight.bold,
-      ),
+          fontSize: 40, fontWeight: FontWeight.normal, color: Colors.black),
       titleLarge: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
@@ -44,20 +36,18 @@ class AppTheme {
       titleSmall: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: Colors.black54,
       ),
       bodyLarge: TextStyle(
         fontSize: 13,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: Colors.black54,
       ),
     ),
   );
 
   static final ThemeData darkTheme = ThemeData(
-    // splashColor: Colors.transparent,
-    // highlightColor: Colors.transparent,
-    // hoverColor: Colors.transparent,
+    cardColor: Colors.grey.withOpacity(0.5),
     useMaterial3: true,
     scaffoldBackgroundColor: Colors.black,
     pageTransitionsTheme: const PageTransitionsTheme(

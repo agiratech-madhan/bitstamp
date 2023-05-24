@@ -31,21 +31,20 @@ class ApiEndpoint {
   }
 
   static String bitsnap(BitsnapEndPoint endpoint, String? searchValue) {
+    final data =
+        (searchValue != "" || searchValue != null) ? '/$searchValue' : '';
+
     switch (endpoint) {
       case BitsnapEndPoint.TICKER:
-        print(searchValue);
-        final data =
-            (searchValue != "" || searchValue != null) ? '/$searchValue' : '';
-        print("$baseUrl/ticker$data");
-
-        print("$baseUrl/ticker$data");
-
         return '$baseUrl/ticker$data';
+      case BitsnapEndPoint.ORDER_BOOK:
+        return '$baseUrl/order_book$data';
     }
   }
 }
+//     .get(Uri.parse("https://www.bitstamp.net/api/v2/order_book/btcusd"));
 
-enum BitsnapEndPoint { TICKER }
+enum BitsnapEndPoint { TICKER, ORDER_BOOK }
 
 enum AuthEndpoint {
   LOGIN,

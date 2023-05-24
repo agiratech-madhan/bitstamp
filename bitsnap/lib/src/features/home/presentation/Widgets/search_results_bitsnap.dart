@@ -2,6 +2,7 @@ import 'package:bitsnap/src/constants/string_constants.dart';
 import 'package:bitsnap/src/features/home/presentation/Widgets/view_order_book.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../utils/utils.dart';
 import 'column_data.dart';
@@ -14,12 +15,15 @@ class SearchResultsBitsnap extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final searchkey = ref.watch(searchBitsnap);
     final singleBitsnaData = ref.watch(fetchSingleBitsnapProvider);
-
     final showBook = ref.watch(viewOrderBook);
-
+    // print(DateTime)
     return searchkey != ''
         ? singleBitsnaData.when(
             data: (bitnsap) {
+              DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(
+                  int.parse('${bitnsap.timestamp!}000'),
+                  isUtc: true);
+
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -31,7 +35,7 @@ class SearchResultsBitsnap extends HookConsumerWidget {
                         style: context.textThemes.displayMedium,
                       ),
                       Text(
-                        DateTime.now().toString().substring(1, 16),
+                        DateFormat('dd MMM yyyy, HH:mm:ss').format(dateTime),
                         style: context.textThemes.bodyLarge,
                       ),
                     ],
@@ -62,7 +66,7 @@ class SearchResultsBitsnap extends HookConsumerWidget {
                     height: UIDimens.size20,
                   ),
                   Text(
-                    StringConstants.volume.tr(context),
+                    StringConstants.volume.tr(context).toUpperCase(),
                     style: context.textThemes.titleSmall,
                   ),
                   const SizedBox(
@@ -84,7 +88,7 @@ class SearchResultsBitsnap extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  const ViewBook()
+                  Visibility(visible: showBook, child: const ViewBook())
                 ],
               ).paddingSymmetric(
                 horizontal: UIDimens.size12,

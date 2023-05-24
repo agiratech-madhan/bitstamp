@@ -27,14 +27,20 @@ class SearchBitsnap extends HookConsumerWidget {
           onSubmitted: (value) {
             ref.read(searchBitsnap.notifier).state = value;
           },
+          style: context.textThemes.titleSmall,
           decoration: InputDecoration(
               filled: true,
               border: InputBorder.none,
+              labelStyle: context.textThemes.titleSmall,
               fillColor: Colors.grey.withOpacity(0.2),
-              suffixIcon: const Icon(
-                Icons.search,
-                color: Colors.black,
-              )),
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    ref.read(searchBitsnap.notifier).state = searchKey.value;
+                  },
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ))),
         ),
       ),
     );

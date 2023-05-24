@@ -12,13 +12,16 @@ class HomeScreen extends HookConsumerWidget {
     return Scaffold(
       body: const SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [SearchBitsnap(), SearchResultsBitsnap()],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple,
+        shape: const StadiumBorder(),
         onPressed: () async {
-          ref.refresh(fetchSingleBitsnapProvider);
+          final data = ref.refresh(fetchSingleBitsnapProvider);
+          print(data);
         },
         child: const Icon(
           Icons.refresh_outlined,
